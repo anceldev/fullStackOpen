@@ -1,0 +1,16 @@
+img {
+  width: 200px;
+  margin-top: 10px;
+}
+li {
+  margin: 20px 5px
+}
+button {
+  margin-left: 10px;
+}
+.list-item {
+  color: darkgreen;
+}
+.languages {
+  list-style:inside;
+}

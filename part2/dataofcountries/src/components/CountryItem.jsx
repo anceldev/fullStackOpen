@@ -5,11 +5,12 @@ const CountryItem = ({country}) => {
   const [show, setShow] = useState(false)
   const [searchCountry, setSearchCountry] = useState(null)
 
+  
+
   useState(() =>{
     countryService
     .getCountry(country.name.common)
     .then(founded => {
-      console.log(founded)
       setSearchCountry(founded)
     })
     .catch(error => console.log(error))

@@ -7,7 +7,7 @@ const CountriesList = ({countries}) => {
       <ul>
         {countries.map(country => {
           return (
-            // <li key={country.name.common}>{country.name.common}<button onClick={handleClick}>Show</button></li>
+
             <CountryItem key={country.name.common} country={country} />
           )
         })

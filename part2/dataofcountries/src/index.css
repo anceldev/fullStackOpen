@@ -1,7 +1,7 @@
-img {
+/* img {
   width: 200px;
   margin-top: 10px;
-}
+} */
 li {
   margin: 20px 5px
 }
@@ -13,4 +13,11 @@ button {
 }
 .languages {
   list-style:inside;
+}
+.icon-weather {
+  width: 50;
+}
+.flag-country {
+  width: 200px;
+  margin-top: 10px;
 }

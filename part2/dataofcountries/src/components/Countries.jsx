@@ -19,7 +19,6 @@ const Countries = ({ search, countries }) => {
   const makeFilter = () => {
     if (search.length > 0) {
       const filteredList = countries.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()))
-      console.log(filteredList)
       if (filteredList.length > 10) {
         setMessage('Too many matches, specify another filter')
         setList(null)

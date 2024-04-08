@@ -55,11 +55,20 @@ const newID = () => {
 }
 app.post('/api/persons', (request, response) => {
   const body = request.body
-  if(!body.name) {
+  if(!body.name || !body.number) {
     return response.status(400).json({
       error: 'content missing'
     })
   }
+
+  const personExists = persons.find(person => person.name.toLocaleLowerCase() === body.name.toLocaleLowerCase())
+
+  if(personExists) {
+    return response.status(400).json({
+      error: 'name bust be unique'
+    })
+  }
+
   const person = {
     name: body.name,
     number: body.number,

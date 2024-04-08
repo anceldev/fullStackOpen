@@ -50,6 +50,26 @@ app.get('/info', (request, response) => {
   response.send(`<p>Phonebook has info for ${numPersons} people<p><p>${new Date()}</p>`)
 })
 
+const newID = () => {
+  return Math.floor(Math.random() * 2000)
+}
+app.post('/api/persons', (request, response) => {
+  const body = request.body
+  if(!body.name) {
+    return response.status(400).json({
+      error: 'content missing'
+    })
+  }
+  const person = {
+    name: body.name,
+    number: body.number,
+    id: newID()
+  }
+
+  persons = persons.concat(person)
+  response.json(person)
+})
+
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)

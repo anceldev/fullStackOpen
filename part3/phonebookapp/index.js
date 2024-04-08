@@ -27,7 +27,7 @@ let persons = [
 
 morgan.token("post-body", (req, res) => JSON.stringify(req.body));
 app.use(express.json())
-app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
+// app.use(morgan(":method :url :status :res[content-length] - :response-time ms :post-body"))
 
 app.get('/', (request, response) => {
   response.send('<h1>Phonebook App</h1>')
@@ -56,6 +56,7 @@ app.get('/info', (request, response) => {
 const newID = () => {
   return Math.floor(Math.random() * 2000)
 }
+app.use(morgan(":method :url :status :res[content-length] - :response-time ms :post-body"))
 app.post('/api/persons', (request, response) => {
   const body = request.body
   if(!body.name || !body.number) {

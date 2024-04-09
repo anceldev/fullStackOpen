@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 let notes = [
@@ -17,6 +18,11 @@ let notes = [
     content: 'GET and POST are the most important methods of HTTP protocol',
     important: true,
   }
+  ,{
+    id: 4,
+    content: 'Testing Corst',
+    importante: true
+  }
 ]
 
 const requestLogger = (request, response, next) => {
@@ -28,6 +34,8 @@ const requestLogger = (request, response, next) => {
 }
 app.use(express.json())
 app.use(requestLogger)
+app.use(express.static('dist'))
+app.use(cors())
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint'})
@@ -85,6 +93,7 @@ app.delete('/api/notes/:id', (request, response) => {
   response.status(204).send(`Note with id ${id} deleted`)
 })
 
-const PORT = 3002
-app.listen(PORT)
-console.log(`Server running on port ${PORT}`)
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
